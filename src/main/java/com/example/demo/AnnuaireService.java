@@ -30,4 +30,13 @@ public class AnnuaireService {
             }
         }
     }
+
+    public Personne getPersonneById(Integer id) {
+        for(Personne p : personnes){
+            if(p.getId().equals((id))){
+                return p;
+            }
+        }
+        return null;
+    }
 }

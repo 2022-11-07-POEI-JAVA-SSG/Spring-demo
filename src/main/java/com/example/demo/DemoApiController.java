@@ -13,12 +13,17 @@ public class DemoApiController {
     AnnuaireService annuaireService;
 
     @GetMapping("personnes")
-    public List<Personne> getOnePersonne(){
+    public List<Personne> getPersonnes(){
         return annuaireService.getPersonnes();
     }
 
     @PostMapping("personnes")
     public void createPersonne(@RequestBody Personne personne){
         annuaireService.addPersonne(personne);
+    }
+
+    @GetMapping("personnes/{id}")
+    public Personne getOnePersonne(@PathVariable Integer id){
+        return annuaireService.getPersonneById(id);
     }
 }
