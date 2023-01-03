@@ -1,6 +1,7 @@
 package com.example.demo;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -11,8 +12,16 @@ public class AdminController {
     private AnnuaireService annuaireService;
 
     @DeleteMapping("personnes/{id}")
-    public void deletePersonne(@PathVariable Integer id){
-        annuaireService.delete(id);
+    public ResponseEntity deletePersonne(@PathVariable Integer id){
+        Personne p = annuaireService.getPersonneById(id);
+        if(p == null){
+            // indiquer status code : 404
+            return ResponseEntity.notFound().build();
+        } else {
+            annuaireService.delete(id);
+            // indiquer status code : 200
+            return ResponseEntity.ok().build();
+        }
     }
 
     @PutMapping("personnes/{id}")
