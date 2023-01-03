@@ -1,10 +1,7 @@
 package com.example.demo;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("admin/api")
@@ -16,6 +13,11 @@ public class AdminController {
     @DeleteMapping("personnes/{id}")
     public void deletePersonne(@PathVariable Integer id){
         annuaireService.delete(id);
+    }
+
+    @PutMapping("personnes/{id}")
+    public void updatePersonne(@PathVariable Integer id, @RequestBody Personne personne){
+        annuaireService.updatePersonne(id, personne);
     }
 
 }

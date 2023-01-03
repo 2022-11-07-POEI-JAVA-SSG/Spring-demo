@@ -39,4 +39,12 @@ public class AnnuaireService {
         }
         return null;
     }
+
+    public void updatePersonne(Integer id, Personne personne) {
+        for(int i = 0 ; i< personnes.size() ; i++){
+            if(personnes.get(i).getId().equals((id))) {
+                personnes.set(i, personne);
+            }
+        }
+    }
 }
