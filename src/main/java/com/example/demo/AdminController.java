@@ -25,8 +25,21 @@ public class AdminController {
     }
 
     @PutMapping("personnes/{id}")
-    public void updatePersonne(@PathVariable Integer id, @RequestBody Personne personne){
-        annuaireService.updatePersonne(id, personne);
+    public ResponseEntity updatePersonne(@PathVariable Integer id, @RequestBody Personne personne){
+        if(!id.equals(personne.getId())){
+            return ResponseEntity.badRequest().build();
+        } else {
+            Personne p = annuaireService.getPersonneById(id);
+            if(p == null){
+                // indiquer status code : 404
+                return ResponseEntity.notFound().build();
+            } else {
+                annuaireService.updatePersonne(id, personne);
+                return ResponseEntity.ok().build();
+            }
+        }
+
+
     }
 
 }
