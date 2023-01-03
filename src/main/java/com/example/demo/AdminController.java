@@ -9,6 +9,19 @@ import org.springframework.web.bind.annotation.*;
 public class AdminController {
 
     @Autowired
+    private AnnuaireDatabaseService annuaireDatabaseService;
+
+    @DeleteMapping("personnes/{id}")
+    public void deletePersonne(@PathVariable Integer id){
+        annuaireDatabaseService.delete(id);
+    }
+    @PutMapping("personnes/{id}")
+    public void updatePersonne(@PathVariable Integer id, @RequestBody Personne personne){
+       annuaireDatabaseService.updatePersonne(id, personne);
+    }
+
+    /*
+    @Autowired
     private AnnuaireService annuaireService;
 
     @DeleteMapping("personnes/{id}")
@@ -38,8 +51,6 @@ public class AdminController {
                 return ResponseEntity.ok().build();
             }
         }
-
-
     }
-
+*/
 }
