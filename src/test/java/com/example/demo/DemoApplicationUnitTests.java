@@ -1,26 +1,18 @@
 package com.example.demo;
 
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
 
-@SpringBootTest
-class DemoApplicationTests {
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-	@Autowired
-	AnnuaireDatabaseService annuaireDatabaseService;
-
-	@Test
-	void testfindAllPersonnesByNom() {
-		List<Personne> familleDelon = annuaireDatabaseService.getPersonnesByNom("Delon");
-		assertEquals(2, familleDelon.size());
-	}
+class DemoApplicationUnitTests {
 
 	@Test
 	void testAdditionner() {
+		AnnuaireDatabaseService annuaireDatabaseService = new AnnuaireDatabaseService();
 		int resultat = annuaireDatabaseService.additionner(2, 3);
 		assertEquals(5, resultat);
 	}
