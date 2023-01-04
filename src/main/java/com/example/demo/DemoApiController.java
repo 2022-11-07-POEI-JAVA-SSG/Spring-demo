@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,8 +22,17 @@ public class DemoApiController {
     }
 
     @GetMapping("personnes")
-    public List<Personne> getPersonnes(){
-        return annuaireDatabaseService.getPersonnes();
+    public List<PersonneDTO> getPersonnes(){
+
+        List<PersonneDTO> dtos = new ArrayList<>();
+        List<Personne> entities = annuaireDatabaseService.getPersonnes();
+
+        for(Personne entity : entities){
+            PersonneDTO dto = PersonneMapper.convertToDTO(entity);
+            dtos.add(dto);
+        }
+
+        return dtos;
     }
 
     @GetMapping("personnes/{id}")
