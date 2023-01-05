@@ -17,7 +17,7 @@ public class Stage {
     private String nom;
     private LocalDateTime horaire;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER) // Collections are lazy-loaded by default
     List<Personne> stagiaires  = new ArrayList<>();
 
     public Stage(String nom, LocalDateTime horaire) {

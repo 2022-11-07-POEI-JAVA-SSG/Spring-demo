@@ -24,9 +24,10 @@ class StagesSpringTests {
 	}
 
 
-	// Probleme à corriger : Lazy Exception
-/*	@Test
-	void testManyToManyBug() {
+	// Si erreur "Lazy Exception" penser à rajouter dans @ManyToMany:
+	// fetch = FetchType.EAGER
+	@Test
+	void testManyToManyV1() {
 
 		Stage salsa = stageRepository.findById(1).get();
 
@@ -37,10 +38,10 @@ class StagesSpringTests {
 		salsa.addStagiaire(marie);
 
 		stageRepository.save(salsa);
-	}*/
+	}
 
 	@Test
-	void testManyToMany() {
+	void testManyToManyV2() {
 
 		Personne dev1 = new Personne("dev1", "dev1");
 		personneRepository.save(dev1);
