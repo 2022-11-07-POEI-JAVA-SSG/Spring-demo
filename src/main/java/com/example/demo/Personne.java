@@ -14,6 +14,9 @@ public class Personne {
     private String prenom;
     private String nom;
 
+    @ManyToOne
+    Adresse adresse;
+
     public Personne(String prenom, String nom) {
         this.prenom = prenom;
         this.nom = nom;
@@ -44,6 +47,14 @@ public class Personne {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Adresse getAdresse() {
+        return adresse;
+    }
+
+    public void setAdresse(Adresse adresse) {
+        this.adresse = adresse;
     }
 
     @Override
