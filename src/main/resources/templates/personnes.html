@@ -12,8 +12,17 @@
     <h1>Annuaire de personnes</h1>
 
     <p th:text=" 'Bienvenu à ' + ${ prenom }"></p>
+    <p th:if="${age} > 17 ">Vous êtes une personne majeure</p>
+    <p th:if="${age} < 18 ">Vous êtes une personne mineure</p>
 
     <h2>Liste des personnes dans l'annuaire</h2>
+
+    <div th:switch="${personnes.size()}">
+        <p th:case="0">La liste est vide</p>
+        <p th:case="1">La liste contient 1 personne</p>
+        <p th:case="*">La liste contient les personnes suivantes</p>
+    </div>
+
     <ul>
         <li th:each="p:${personnes}" th:text="${p.getPrenom()} + ' ' + ${p.getNom()}"></li>
     </ul>

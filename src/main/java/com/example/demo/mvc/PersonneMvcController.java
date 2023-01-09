@@ -17,12 +17,13 @@ public class PersonneMvcController {
     private AnnuaireDatabaseService annuaireDatabaseService;
 
     @GetMapping("personnes")
-    public String affichePersonnes(Model model, @RequestParam String prenom){
+    public String affichePersonnes(Model model, @RequestParam String prenom, @RequestParam Integer age){
 
         List<Personne> personnes = annuaireDatabaseService.getPersonnes();
         model.addAttribute("personnes", personnes);
 
         model.addAttribute("prenom", prenom);
+        model.addAttribute("age", age);
 
 
         return "personnes.html";
