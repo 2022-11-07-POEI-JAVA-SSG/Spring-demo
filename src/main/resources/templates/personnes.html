@@ -11,9 +11,9 @@
 
     <h1>Annuaire de personnes</h1>
 
-    <p th:text=" 'Bienvenu à ' + ${ prenom }"></p>
+<!--    <p th:text=" 'Bienvenu à ' + ${ prenom }"></p>
     <p th:if="${age} > 17 ">Vous êtes une personne majeure</p>
-    <p th:if="${age} < 18 ">Vous êtes une personne mineure</p>
+    <p th:if="${age} < 18 ">Vous êtes une personne mineure</p>-->
 
     <h2>Liste des personnes dans l'annuaire</h2>
 
@@ -27,7 +27,12 @@
         <li th:each="p:${personnes}" th:text="${p.getPrenom()} + ' ' + ${p.getNom()}"></li>
     </ul>
 
+    <form method="POST" action="personnes">
+        <label>Prenom:</label><input type="text" name="prenom" id="prenom">
+        <label>Nom:</label><input type="text" name="nom" id="nom">
 
+        <input type="submit" value="Ajouter">
+    </form>
 
 
 </body>
