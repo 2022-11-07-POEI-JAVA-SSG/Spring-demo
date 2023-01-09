@@ -12,5 +12,14 @@
     <h1>Annuaire de personnes</h1>
 
     <p th:text=" 'Bienvenu à ' + ${ prenom }"></p>
+
+    <h2>Liste des personnes dans l'annuaire</h2>
+    <ul>
+        <li th:each="p:${personnes}" th:text="${p.getPrenom()} + ' ' + ${p.getNom()}"></li>
+    </ul>
+
+
+
+
 </body>
 </html>
